@@ -1,6 +1,6 @@
 # ansible-cisco
 
-Few playbook for Cisco Routers and Switches
+Some playbooks for Cisco Routers and Switches
 
 ## Requirements
 None
