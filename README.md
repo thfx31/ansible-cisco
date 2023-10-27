@@ -6,8 +6,8 @@ Some playbooks for Cisco Routers and Switches
 None
 
 ## Tested devices
-Router : Cisco 1921
-Switch : Cisco Catalyst 3750
+- Router : Cisco 1921
+- Switch : Cisco Catalyst 3750
 
 ## Licence
 GPL V3
