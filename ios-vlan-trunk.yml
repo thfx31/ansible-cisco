@@ -1,0 +1,30 @@
+---
+- name: Configure Vlan and Trunk interface
+  hosts: switches
+  connection: ansible.netcommon.network_cli
+
+  tasks:
+    - name: Configure Vlans
+      cisco.ios.ios_vlans:
+        config:
+          - name: Vlan_20
+            vlan_id: 20
+            state: active
+          - name: Vlan_30
+            vlan_id: 30
+            state: active
+        state: merged
+
+    - name: Create Trunk on Gi1/0/1 and allow Vlans 20 and 30
+      cisco.ios.ios_command:
+        commands:
+          - conf t
+          - interface GigabitEthernet1/0/1
+          - switchport trunk encapsulation dot1q
+          - switchport mode trunk
+          - switchport trunk allowed vlan 20,30
+          - no shut
+
+    - name: Save running to startup when modified
+      cisco.ios.ios_config:
+        save_when: modified
